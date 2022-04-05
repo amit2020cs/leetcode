@@ -10,13 +10,18 @@ class Solution:
         :param m: size of sorted array b
         :return: array of intersection of two array or -1
         '''
-        # code here
+        
         res = list(set(a) & set(b))
         res.sort()
         return res
         # lst3 = [value for value in a if value in b]
-        # res = lst3.sort()
-        # return res
+        # lst3.sort()
+        # return lst3
+        # if a is not 0 or b is not 0:
+        #     res = set(a).intersection(b)
+        #     return res
+        # else:
+        #     return -1
 
 #{ 
 #  Driver Code Starts
