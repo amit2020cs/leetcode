@@ -1,10 +1,8 @@
 class Solution:
     def finalValueAfterOperations(self, operations: List[str]) -> int:
+        dt = {"X++":1,"++X":1,"--X":-1,"X--":-1}
         x = 0
-        for i in operations:
-            if i=="++X" or i=="X++":
-                x+=1
-            else:
-                x-=1
+        for ele in operations:
+            x +=dt[ele]
         return x
         
