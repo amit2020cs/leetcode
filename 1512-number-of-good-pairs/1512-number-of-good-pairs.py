@@ -1,12 +1,9 @@
 class Solution:
     def numIdenticalPairs(self, nums: List[int]) -> int:
-        pair_dict = {}
-        pairs = 0
-        for i in nums:
-            try:
-                pair_dict[i]+=1
-                pairs += pair_dict[i] -1
-            except:
-                pair_dict[i] = 1
-        return pairs
+        result = 0
         
+        for i in range(len(nums)):
+            for j in range(i+1,len(nums)):
+                if nums[i]==nums[j]:
+                    result+=1
+        return result
