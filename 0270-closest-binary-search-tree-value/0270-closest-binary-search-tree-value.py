@@ -7,8 +7,12 @@
 class Solution:
     def closestValue(self, root: Optional[TreeNode], target: float) -> int:
         
-        def inorder(r:TreeNode):
-            return inorder(r.left) + [r.val] + inorder(r.right) if r else []
+        closest = root.val
         
-        return min(inorder(root), key = lambda x: abs(target -x))
+        while root:
+            closest = min(root.val, closest, key = lambda x:(abs(target -x), x))
+            
+            root = root.left if target < root.val else root.right
+            
+        return closest
         
