@@ -10,20 +10,12 @@ class Solution:
         Do not return anything, modify root in-place instead.
         """
         
-        if not root:
-            return None
-        
-        node = root
-        
-        while node:
-            
-            if node.left:
-                
-                rightmost = node.left
-                while rightmost.right:
-                    rightmost = rightmost.right
-                rightmost.right = node.right
-                node.right = node.left
-                node.left = None
-            node = node.right
+        self.previous_right = None
+        def helper(root = root):
+            if root:
+                helper(root.right)
+                helper(root.left)
+                root.right, self.previous_right = self.previous_right, root
+                root.left = None
+        helper()
                     
