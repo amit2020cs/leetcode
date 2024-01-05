@@ -1,10 +1,21 @@
 class Solution:
     def minCost(self, costs: List[List[int]]) -> int:
-        dp = [0,0,0]
+        n = len(costs)
         
-        for i in range(len(costs)):
-            dp0 = costs[i][0]+ min(dp[1],dp[2])
-            dp1 = costs[i][1]+ min(dp[0],dp[2])
-            dp2 = costs[i][2]+ min(dp[0],dp[1])
-            dp = [dp0,dp1, dp2]
-        return min(dp)
+        if n==0: return 0
+        k = len(costs[0])
+        
+        for h in range(1,n):
+            
+            for c in range(k):
+                
+                best = math.inf
+                
+                for p in range(k):
+                    
+                    if c == p: continue
+                    
+                    best = min(best, costs[h-1][p])
+                costs[h][c]+=best
+                
+        return min(costs[-1])
