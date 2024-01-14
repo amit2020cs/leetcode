@@ -13,7 +13,6 @@ class Solution:
             if token in operations:
                 num2 = stack.pop()
                 num1 = stack.pop()
-                
                 oper = operations[token]
                 stack.append(oper(num1,num2))
             else:
