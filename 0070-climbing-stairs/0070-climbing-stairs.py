@@ -1,9 +1,12 @@
 class Solution:
-    def climbStairs(self, n: int) -> int:
-        one , two = 1,1
+    def __init__(self):
+        self.dp = {1:1,2:2}
         
-        for i in range(n-1):
-            temp= one
-            one = one + two
-            two  = temp
-        return one
+    def climbStairs(self, n: int) -> int:
+        # dp = {1:1,2:2}
+        
+        if n not in self.dp:
+            self.dp[n] = self.climbStairs(n-1)+ self.climbStairs(n-2)
+        return self.dp[n]
+            
+        
