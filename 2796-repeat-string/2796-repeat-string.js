@@ -3,10 +3,9 @@
  * @return {string}
  */
 String.prototype.replicate = function(times) {
-    const result = [];
-    for (let i = 0; i < times; i++) {
-        result.push(this);
+    if (times === 0) {
+        return "";
     }
-
-    return result.join('');
+    //Here "this" refers to the string object on which the method is called
+    return this + this.replicate(times - 1);
 }
