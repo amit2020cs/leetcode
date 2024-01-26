@@ -1,8 +1,17 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        if k == len(nums):
-            return nums
         
-        count = Counter(nums)
+#         hashmap = {}
         
-        return heapq.nlargest(k,count.keys(), key = count.get)
+#         for i in range(len(nums)):
+#             if nums[i] in hashmap:
+#                 hashmap[nums[i]]+=1
+#             hashmap[nums[i]]=1
+        
+#         res = [x for x in sorted(hashmap.values(), reverse=True)]
+#         return res[:k]
+        
+        return [x for x, y in collections.Counter(nums).most_common(k)]
+        
+            
+        
