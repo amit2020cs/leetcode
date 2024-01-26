@@ -1,17 +1,21 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         
-#         hashmap = {}
+        hashmap = {}
         
-#         for i in range(len(nums)):
-#             if nums[i] in hashmap:
-#                 hashmap[nums[i]]+=1
-#             hashmap[nums[i]]=1
+        for i in range(len(nums)):
+            if nums[i] in hashmap:
+                hashmap[nums[i]] += 1
+            else:
+                hashmap[nums[i]] = 1
         
-#         res = [x for x in sorted(hashmap.values(), reverse=True)]
-#         return res[:k]
+        # Sort the dictionary items based on frequency in descending order
+        sorted_items = sorted(hashmap.items(), key=lambda x: x[1], reverse=True)
         
-        return [x for x, y in collections.Counter(nums).most_common(k)]
+        # Extract the keys (numbers) from the sorted items
+        res = [x[0] for x in sorted_items]
         
+        return res[:k]
+
             
         
