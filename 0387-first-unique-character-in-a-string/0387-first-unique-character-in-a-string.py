@@ -1,9 +1,8 @@
 class Solution:
     def firstUniqChar(self, s: str) -> int:
         
-        res = list(s)
         dic  = {}
-        for i in res:
+        for i in s:
             if i in dic:
                 dic[i]+=1
             else:
