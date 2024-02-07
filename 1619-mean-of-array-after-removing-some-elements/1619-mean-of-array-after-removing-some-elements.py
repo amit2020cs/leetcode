@@ -1,9 +1,10 @@
 class Solution:
     def trimMean(self, arr: List[int]) -> float:
-        arr.sort()
+        counter = 0.05*len(arr)
         
-        N = len(arr)+1
-        n = int(0.05*N)
-        
-        return mean(arr[n : len(arr) - n])
+        while counter != 0:
+            arr.remove(min(arr))
+            arr.remove(max(arr))
+            counter -= 1
             
+        return sum(arr) / len(arr)
